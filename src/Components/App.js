@@ -3,14 +3,17 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import { Routes, Route } from "react-router-dom";
 import Products from "./Products";
+import Product from "./Product";
+import Welcome from "./Welcome";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />}>
+          <Route path="/welcome" element={<Welcome />}></Route>
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<Product />} />
           <Route path="*" element={<div>Error page</div>} />
         </Route>
       </Routes>

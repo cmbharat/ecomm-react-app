@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function Products() {
   const [data, setData] = useState();
@@ -105,9 +106,12 @@ function Products() {
                       {product.title.substring(0, 12)}...
                     </h5>
                     <p className="card-text lead fw-bold">${product.price}</p>
-                    <a href="#" className="btn btn-outline-dark">
-                      Add To Cart
-                    </a>
+                    <NavLink
+                      to={`/products/${product.id}`}
+                      className="btn btn-outline-dark"
+                    >
+                      Buy Now
+                    </NavLink>
                   </div>
                 </div>
               </div>

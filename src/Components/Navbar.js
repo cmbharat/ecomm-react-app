@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <NavLink className="navbar-brand fw-bold fs-4" to="#">
+          <NavLink className="navbar-brand fw-bold fs-4" to="/">
             ONLINE SHOP
           </NavLink>
           <button
@@ -23,7 +23,11 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">
+                <NavLink
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/welcome"
+                >
                   Home
                 </NavLink>
               </li>
