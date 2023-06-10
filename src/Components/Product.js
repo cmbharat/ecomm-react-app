@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addCart, deleteCart } from "../Redux/Action/index";
 
 const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [cartBtn, setCartBtn] = useState("Add to Cart");
+
+  const dispatch = useDispatch();
+  const handleCart = (product) => {
+    if (cartBtn === "Add to Cart") {
+      dispatch(addCart(product));
+      setCartBtn("Remove from Cart");
+    } else {
+      dispatch(deleteCart(product));
+      setCartBtn("Add to Cart");
+    }
+  };
 
   useEffect(() => {
     const getProduct = async () => {
@@ -43,8 +57,11 @@ const Product = () => {
           </p>
           <h3 className="display-6 fw-bold my-4">$ {product.price}</h3>
           <p className="lead">{product.description}</p>
-          <button className="btn btn-outline-dark px-4 py-2">
-            Add to Cart
+          <button
+            className="btn btn-outline-dark px-4 py-2"
+            onClick={() => handleCart(product)}
+          >
+            {cartBtn}
           </button>
 
           <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
